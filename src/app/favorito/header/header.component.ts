@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(["acceso/login"]);
     this.cookieService.delete("islogin");
     this.cookieService.delete("token");
+    this.cookieService.delete("usuario");
 
 
   }

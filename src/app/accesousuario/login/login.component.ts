@@ -60,8 +60,7 @@ export class LoginComponent implements OnInit {
           this.cookieService.set("token",this.token.token);
 
           this.cookieService.set("islogin","Si");
-
-
+          this.cookieService.set("usuario",this.form.controls['email'].value.trim());
           this.router.navigate(["lista/episodios"]);
 
 

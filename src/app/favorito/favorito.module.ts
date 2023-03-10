@@ -10,12 +10,17 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableModule} from '@angular/material/table';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { HeaderComponent } from './header/header.component'
+import { HeaderComponent } from './header/header.component';
+import { FormFavoritoComponent } from './form-favorito/form-favorito.component'
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
     ListadoepisodiosComponent,
-    HeaderComponent
+    HeaderComponent,
+    FormFavoritoComponent,
+
   ],
   imports: [
     CommonModule,
@@ -25,7 +30,10 @@ import { HeaderComponent } from './header/header.component'
     MatIconModule,
     MatButtonModule,
     MatTableModule,
-    MatPaginatorModule
-  ]
+    MatPaginatorModule,
+    MatDialogModule,
+    MatFormFieldModule
+  ],
+  entryComponents:[FormFavoritoComponent]
 })
 export class FavoritoModule { }

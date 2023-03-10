@@ -2,32 +2,28 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { EpidosodioInterface } from './dto/epidosodio-interface';
-import { InfoGeneral } from './dto/info-general';
-import { InfoPages } from './dto/info-pages';
+import { Favoritointerfaz } from './dto/favoritointerfaz';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoritoService {
-  private api1= environment.api1;
+  private api3= environment.api3;
 
   private httpClient: HttpClient;
 
+
+
   constructor(httpClient: HttpClient) {
-    this.httpClient = httpClient;
-  }
-  getInfoEpisodiosPages() {
-    return this.httpClient.get<any>(
-      `${this.api1}episode`
-    );
-
+    this.httpClient =  httpClient;
   }
 
-  getInfoEpisodios(url:string): Observable<InfoGeneral> {
-    return this.httpClient.get<InfoGeneral>(
-      `${url}`
-    );
+  guardarEpisodioFavorito(dto:Favoritointerfaz,token:string):Observable<any>{
 
-  }
+        return this.httpClient.post<any>(
+          `${this.api3}Favoritos`,
+          dto
+        );
+
+      }
 }

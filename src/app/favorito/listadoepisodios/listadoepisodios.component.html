@@ -1,6 +1,8 @@
 
 
 <app-header></app-header>
+
+
 <div  id="managerTask">
 
 
@@ -19,7 +21,7 @@
       <td>{{item.episode}}</td>
       <td>
         <button  style="--bs-btn-padding-x: 0.2rem !important;
-        --bs-btn-padding-y: 0.2rem !important;" type="button" class="btn btn-success"  >Gestionn</button>
+        --bs-btn-padding-y: 0.2rem !important;" type="button" class="btn btn-success" (click)="openDialog()" >Gestionn</button>
 
       </td>
     </tr>
