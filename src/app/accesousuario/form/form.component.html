@@ -1,0 +1,82 @@
+
+<div id="content">
+  <div id="form">
+    <h2 class="header">Formulario de registro</h2>
+    <div>
+      <form [formGroup]="form">
+        <!--Nombre-->
+        <input formControlName="nombre" type="text"  placeholder="Nombre">
+        <ng-container *ngIf="!submittedForm">
+          <div class="error" *ngIf="!form.controls['nombre'].valid">
+            <span *ngIf="this.form.get('clave')?.errors?.['maxlength']">
+              El máximo de carácteres permitido es 100
+            </span>
+            <div *ngIf="this.form.get('nombre')?.errors?.['havespace']">
+              {{massaje}}
+            </div>
+          </div>
+        </ng-container>
+        <!--Apellido-->
+        <input formControlName="apellido" type="text"  placeholder="Apellido">
+        <ng-container *ngIf="!submittedForm">
+          <div class="error" *ngIf="!form.controls['apellido'].valid">
+            <span *ngIf="this.form.get('clave')?.errors?.['maxlength']">
+              El máximo de carácteres permitido es 100
+            </span>
+            <div *ngIf="this.form.get('apellido')?.errors?.['havespace']">
+              {{massaje}}
+            </div>
+          </div>
+        </ng-container>
+
+        <!--Documento identidad-->
+        <input formControlName="doctoIdent" type="text"  placeholder="Nomero de documento">
+        <ng-container *ngIf="!submittedForm">
+          <div class="error" *ngIf="!form.controls['doctoIdent'].valid">
+            <span *ngIf="this.form.get('clave')?.errors?.['maxlength']">
+              El máximo de carácteres permitido es 15
+            </span>
+            <div *ngIf="this.form.get('doctoIdent')?.errors?.['havespace']">
+              {{massaje}}
+            </div>
+          </div>
+        </ng-container>
+
+        <!--Correo-->
+        <input formControlName="email" type="text"  placeholder="correo">
+        <ng-container *ngIf="!submittedForm">
+          <div class="error" *ngIf="!form.controls['email'].valid">
+            <div *ngIf="this.form.get('email')?.errors?.['havespace']">
+              {{massaje}}
+            </div>
+            <div *ngIf="this.form.get('email')?.errors?.['ismail']">
+              No es un correo electronico valido
+             </div>
+          </div>
+        </ng-container>
+        <!--contraseña-->
+        <input  formControlName="clave" type="password" placeholder="clave">
+        <ng-container *ngIf="!submittedForm">
+          <div class="error" *ngIf="!form.controls['clave'].valid">
+            <span *ngIf="this.form.get('clave')?.errors?.['maxlength']">
+              El máximo de carácteres permitido es 8
+            </span>
+            <div *ngIf="this.form.get('clave')?.errors?.['havespace']">
+              {{massaje}}
+            </div>
+          </div>
+        </ng-container>
+
+
+        <button (click)="guardar()" >Guardar</button>
+
+          <a  [routerLink]="['/acceso/login/']">Regresar
+          </a>
+
+      </form>
+    </div>
+  </div>
+
+</div>
+
+

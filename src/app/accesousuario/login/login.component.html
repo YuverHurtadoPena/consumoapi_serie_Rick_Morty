@@ -1,0 +1,41 @@
+
+<div id="content">
+  <div id="form">
+    <h2 class="header">Iniciar sesión</h2>
+    <div>
+      <form [formGroup]="form">
+        <!--USUARIO-->
+        <input formControlName="email" type="text" name="email" placeholder="Usuario">
+        <ng-container *ngIf="!submittedForm">
+          <div class="error" *ngIf="!form.controls['email'].valid">
+            <div *ngIf="this.form.get('email')?.errors?.['havespace']">
+              {{massaje}}
+            </div>
+            <div *ngIf="this.form.get('email')?.errors?.['ismail']">
+             No es un correo electronico valido
+            </div>
+          </div>
+        </ng-container>
+        <!--CLAVE-->
+        <input  formControlName="clave" type="password" placeholder="clave">
+        <ng-container *ngIf="!submittedForm">
+          <div class="error" *ngIf="!form.controls['clave'].valid">
+            <span *ngIf="this.form.get('clave')?.errors?.['maxlength']">
+              El máximo de carácteres permitido es 8
+            </span>
+            <div *ngIf="this.form.get('clave')?.errors?.['havespace']">
+              {{massaje}}
+            </div>
+          </div>
+        </ng-container>
+
+        <button  (click)="onLogin()">Entrar</button>
+
+          <a  [routerLink]="['/acceso/registrarUsuario/']">Crear cuenta
+          </a>
+
+      </form>
+    </div>
+  </div>
+
+</div>
