@@ -6,9 +6,10 @@
 <div  id="managerTask">
 
 
-<div  class="responsive">
-<h1>LISTA DE EPISODIOS</h1>
-  <table id="tabla">
+<div  class="responsive ">
+<h1 class="title" >LISTA DE EPISODIOS</h1>
+<div class="scroll">
+  <table id="tabla"  >
 
     <th class="th_left">Nombre</th>
     <th class="th_left"> Fecha</th>
@@ -22,11 +23,21 @@
       <td>{{item.episode}}</td>
       <td>
         <button  style="--bs-btn-padding-x: 0.2rem !important;
-        --bs-btn-padding-y: 0.2rem !important;" type="button" class="btn btn-success" (click)="openDialog(item.characters)" >Ver personajes</button>
+        --bs-btn-padding-y: 0.2rem !important;" type="button" class="btn btn-success boton" (click)="openDialog(item.characters)" >Ver personajes</button>
 
       </td>
     </tr>
+
   </table>
+
+</div>
+<div style="display: inline-flex; margin-left: 10%;">
+  <h6 style=" font-size: 10px !important;     transform: translateY(10px);">pagina {{next_pages}} de {{pagina_ultima}}</h6>
+  <button (click)="back()"  class="boton_pages"> <mat-icon>arrow_left</mat-icon></button>
+
+
+  <button class="boton_pages" style="margin-left: 10px;" (click)="next()">  <mat-icon>arrow_right</mat-icon></button>
+</div>
   </div>
 
 </div>

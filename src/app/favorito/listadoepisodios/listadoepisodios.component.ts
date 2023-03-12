@@ -32,7 +32,7 @@ export class ListadoepisodiosComponent implements OnInit {
       data: {
         "personajes":personajes
       },
-      width:'40%',
+      width:'30%',
       height:'80%',
 
     });
@@ -43,17 +43,15 @@ export class ListadoepisodiosComponent implements OnInit {
     this.episodio_url = localStorage.getItem("url");
     this.pagina_ultima = Number(localStorage.getItem("numeroPages"));
 
-    this.getEpisodios();
+    this.getEpisodios(this.next_pages.toString());
   }
 
   getInfoEpisodiosPages(){
     this.service.getInfoEpisodiosPages().subscribe({
       next:(data)=>{
         this.url=data.info.next.split("=");
-        localStorage.setItem("url", this.url[0]);
         this.pages = data.info.pages.toString();
         localStorage.setItem("numeroPages", this.pages.toString());
-
 
       },
       error:()=>{
@@ -63,9 +61,23 @@ export class ListadoepisodiosComponent implements OnInit {
     })
   }
 
-  getEpisodios(){
+  next(){
+    if (this.next_pages<this.pagina_ultima){
+      this.next_pages = this.next_pages+1;
+      this.getEpisodios(this.next_pages.toString());
 
-  let url=this.episodio_url+"="+this.next_pages.toString();
+    }
+  }
+  back(){
+    if (this.next_pages>1){
+      this.next_pages = this.next_pages-1;
+      this.getEpisodios(this.next_pages.toString());
+
+    }
+  }
+  getEpisodios(pagina:string){
+
+  let url=this.episodio_url+"="+pagina;
    this.service.getInfoEpisodios(url).subscribe({
     next:(data)=>{
       console.log(data)
