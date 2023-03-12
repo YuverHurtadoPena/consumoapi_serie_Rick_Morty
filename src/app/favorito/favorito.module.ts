@@ -11,15 +11,17 @@ import {MatTableModule} from '@angular/material/table';
 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { HeaderComponent } from './header/header.component';
-import { FormFavoritoComponent } from './form-favorito/form-favorito.component'
+import { FormFavoritoComponent } from './form-favorito/form-favorito.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ListaPersonajesComponent } from './lista-personajes/lista-personajes.component';
 
 @NgModule({
   declarations: [
     ListadoepisodiosComponent,
     HeaderComponent,
     FormFavoritoComponent,
+    ListaPersonajesComponent,
 
   ],
   imports: [
@@ -34,6 +36,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatDialogModule,
     MatFormFieldModule
   ],
+
   entryComponents:[FormFavoritoComponent]
 })
 export class FavoritoModule { }

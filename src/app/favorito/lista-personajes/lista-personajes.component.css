@@ -1,0 +1,26 @@
+.infoPersonaje{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: ;
+
+}
+.infoPersonaje .imagen{
+  width: 100px;
+ height:  100px;
+ border-radius: 50%;
+}
+button {
+  display: block;
+
+  width: 200px;
+  height: 30px;
+  border-radius: 25px;
+  border: none;
+  color: #207cca;
+  font-weight: 700;
+ border: solid 1px #207cca;
+
+  background: white;
+
+
+}

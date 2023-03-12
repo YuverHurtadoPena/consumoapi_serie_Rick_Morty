@@ -13,11 +13,6 @@ const routes: Routes = [
 
       },
       {
-        path: "form",
-        component:FormFavoritoComponent,
-
-      },
-      {
         path: "**",
         redirectTo: "episodios",
       },

@@ -1,12 +1,10 @@
-import {Component, OnInit,Inject} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { EpidosodioInterface } from '../dto/epidosodio-interface';
 
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { FormFavoritoComponent } from '../form-favorito/form-favorito.component';
+import {MatDialog} from '@angular/material/dialog';
+
 import { EpisodioService } from '../episodio.service';
-export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
-}
+import { ListaPersonajesComponent } from '../lista-personajes/lista-personajes.component';
 @Component({
   selector: 'app-listadoepisodios',
   templateUrl: './listadoepisodios.component.html',
@@ -29,12 +27,14 @@ export class ListadoepisodiosComponent implements OnInit {
   constructor(service:EpisodioService,public dialog: MatDialog) {
     this.service = service;
   }
-  openDialog() {
-    this.dialog.open(FormFavoritoComponent, {
+  openDialog(personajes:any[]=[]) {
+    this.dialog.open(ListaPersonajesComponent, {
       data: {
-        animal: 'panda',
+        "personajes":personajes
       },
-      width:'30%',
+      width:'40%',
+      height:'80%',
+
     });
   }
 

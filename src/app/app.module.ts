@@ -27,7 +27,8 @@ import {CookieService} from 'ngx-cookie-service'
     MatIconModule,
     MatToolbarModule
   ],
-  providers: [CookieService],
+  providers: [CookieService,],
+
   bootstrap: [AppComponent],
 
 })

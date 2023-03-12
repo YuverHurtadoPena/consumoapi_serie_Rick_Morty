@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 
 
 import { InfoGeneral } from './dto/info-general';
+import { InfoPersonaje } from './dto/info-personaje';
 
 
 @Injectable({
@@ -33,6 +34,13 @@ export class EpisodioService {
 
   getInfoEpisodios(url:string): Observable<InfoGeneral> {
     return this.httpClient.get<InfoGeneral>(
+      `${url}`
+    );
+
+  }
+
+  getInfoPersonaje(url:string): Observable<InfoPersonaje> {
+    return this.httpClient.get<InfoPersonaje>(
       `${url}`
     );
 

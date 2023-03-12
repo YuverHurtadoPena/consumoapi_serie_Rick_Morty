@@ -7,6 +7,7 @@
 
 
 <div  class="responsive">
+<h1>LISTA DE EPISODIOS</h1>
   <table id="tabla">
 
     <th class="th_left">Nombre</th>
@@ -21,7 +22,7 @@
       <td>{{item.episode}}</td>
       <td>
         <button  style="--bs-btn-padding-x: 0.2rem !important;
-        --bs-btn-padding-y: 0.2rem !important;" type="button" class="btn btn-success" (click)="openDialog()" >Gestionn</button>
+        --bs-btn-padding-y: 0.2rem !important;" type="button" class="btn btn-success" (click)="openDialog(item.characters)" >Ver personajes</button>
 
       </td>
     </tr>

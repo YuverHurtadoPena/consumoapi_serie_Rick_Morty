@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import {Inject} from '@angular/core';
-import { MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 import { CookieService } from 'ngx-cookie-service';
 import { Favoritointerfaz } from '../dto/favoritointerfaz';
 import { FavoritoService } from '../favorito.service';
+import { ListadoepisodiosComponent } from '../listadoepisodios/listadoepisodios.component';
+import { Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
-export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
-}
+
 @Component({
   selector: 'app-form-favorito',
   templateUrl: './form-favorito.component.html',
@@ -19,14 +19,16 @@ export class FormFavoritoComponent implements OnInit {
   private servicio:FavoritoService;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, cookieService:CookieService, servicio:FavoritoService
+    public dialogRef: MatDialogRef<ListadoepisodiosComponent >,
+    @Inject(MAT_DIALOG_DATA) public data: any,cookieService:CookieService, servicio:FavoritoService
   ) {
     this.cookieService = cookieService;
     this.servicio = servicio;
   }
 
   ngOnInit(): void {
-    console.log(this.data)
+
+    this.postGuardar();
   }
   onClickNo(){
 
@@ -36,14 +38,14 @@ export class FormFavoritoComponent implements OnInit {
     this.cookieService.delete("usuario");
 
     const dato:Favoritointerfaz={
-      id_caracter: 1,
+      id_caracter: 3,
       observaciones: "solo es una prueba",
       usuario: this.cookieService.get("usuario"),
 
     }
     this.servicio.guardarEpisodioFavorito(dato,this.cookieService.get("token")).subscribe({
       next:(data)=>{
-        console.log("data"+data)
+        console.log("datajaj"+data)
       },
       error:(err)=>{
         console.log(err)

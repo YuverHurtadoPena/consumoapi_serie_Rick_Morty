@@ -1,6 +1,7 @@
 #managerTask{
   margin:200px;
   margin-top: 100px;
+  box-shadow: 1px 4px 10px 1px #aaa;
 }
 
 #tabla {
@@ -13,34 +14,54 @@
   border: none;
   padding: 8px;
 }
+#tabla th{
+  background-color:  rgb(109, 177, 236) ;
+  color: white;
+  font-size: 20px;
+  font-weight: 400 !important;
+}
 .th_left{
   text-align:left !important;
 }
 
 #tabla tr:nth-child(2n){
-  background-color:#C4F7CE;
+  background-color: hsl(240, 55%, 96%) ;
 }
 
 #tabla tr:nth-child(2n+1){
-  background-color:#F7ECE8;
+  background-color: white;
 }
 
-#tabla tr:hover {background-color: #ECEFAC;}
+#tabla tr:hover {background-color:  #babdd2 }
 
 
+button {
+  display: block;
 
-.form-control{
-  border: 1px solid green !important;
+  width: 150px;
+  height: 30px;
+  border-radius: 25px;
+  border: none;
+  color: #207cca;
+  font-weight: 700;
+ border: solid 1px #207cca;
+
+  background: white;
+  cursor: pointer;
+
+
 }
-.table-hover{
-  background-color: green !important;
-  color: white !important;
-}
-
-.color-save{
-  background-color: green;
+button:hover {
   color: white;
+  font-weight: 700;
+ border: solid 1px white;
+
+  background: #207cca;
+  cursor: pointer;
+
+
 }
+
 
 
 @media screen and (max-width: 767px){
