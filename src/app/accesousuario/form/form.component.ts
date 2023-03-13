@@ -73,7 +73,7 @@ export class FormComponent implements OnInit {
           this.router.navigate(["login"]);
         },
         error: () => {
-          alert("ocurrio un error al intentar guardar un usuario")
+          alert("el correo o el numero de docuemnto ya existen en la base de datos.")
         },
       });
 
