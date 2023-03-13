@@ -1,13 +1,20 @@
-<p>
-  <mat-toolbar color="primary">
 
+  <mat-toolbar color="primary">
+    <a [routerLink]="['/lista/episodios']" >Ir a episodios</a>
+    <a [routerLink]="['/lista/favoritos']" >Ir a mis favoritos</a>
+    <div >
       <button class="home" (click)="cerrar()">
         <mat-icon>power_settings_new</mat-icon>
       </button>
+    </div>
+
+
 
 
 
 
 
   </mat-toolbar>
-</p>
+
+
+

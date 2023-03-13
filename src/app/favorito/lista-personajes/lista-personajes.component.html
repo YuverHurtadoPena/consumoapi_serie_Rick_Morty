@@ -5,6 +5,8 @@
 
   <div><img src="{{item.image}}" alt="" class="imagen"></div>
   <div>
+    <strong>ID: </strong>
+    <label for="">{{item.id}}</label><br>
     <strong>Nombre: </strong>
     <label for="">{{item.name}}</label><br>
     <strong>Género: </strong>
@@ -13,7 +15,7 @@
     <label for="">{{item.species}}</label><br>
     <strong>Estado: </strong>
     <label for="">{{item.status}}</label><br>
-    <button  >Añadir a mis favoritos</button>
+    <button   (click)="openDialog(item.id)" >Añadir a mis favoritos</button>
 
 
 

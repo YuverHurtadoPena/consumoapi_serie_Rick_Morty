@@ -1,3 +1,4 @@
+import { ListaFavoritosComponent } from './lista-favoritos/lista-favoritos.component';
 import { FormFavoritoComponent } from './form-favorito/form-favorito.component';
 import { ListadoepisodiosComponent } from './listadoepisodios/listadoepisodios.component';
 import { NgModule } from '@angular/core';
@@ -10,6 +11,11 @@ const routes: Routes = [
       {
         path: "episodios",
         component:ListadoepisodiosComponent,
+
+      },
+      {
+        path: "favoritos",
+        component:ListaFavoritosComponent
 
       },
       {

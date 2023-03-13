@@ -1,0 +1,26 @@
+.save {
+  color:  #207cca;
+  border: solid 1px #207cca;
+  margin-left: 3px;
+
+}
+.cerrar {
+  border: solid 1px red;
+  color:  red;
+}
+.exito-title{
+  text-align: center;
+  margin-bottom: 30px;
+  color: red;
+}
+.exito-title{
+  text-align: center;
+  margin-bottom: 30px;
+  color: green;
+}
+.p{
+  text-align: center;
+  font-size: 18px;
+  margin-bottom: 80px;
+
+}

@@ -5,6 +5,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 
 import { EpisodioService } from '../episodio.service';
 import { ListadoepisodiosComponent } from '../listadoepisodios/listadoepisodios.component';
+import {MatDialog} from '@angular/material/dialog';
+import { FormFavoritoComponent } from '../form-favorito/form-favorito.component';
 export interface personaje {
   personajes:any[]
 }
@@ -18,7 +20,7 @@ export class ListaPersonajesComponent implements OnInit {
   arrayPersona:InfoPersonaje[]=[];
 
   constructor( public dialogRef: MatDialogRef<ListadoepisodiosComponent >,
-    @Inject(MAT_DIALOG_DATA) public data: personaje,servicioEpisodio:EpisodioService) {
+    @Inject(MAT_DIALOG_DATA) public data: personaje,public dialog: MatDialog,servicioEpisodio:EpisodioService) {
       this.servicioEpisodio = servicioEpisodio;
      }
 
@@ -26,7 +28,20 @@ export class ListaPersonajesComponent implements OnInit {
     this.getPersonajes();
   }
 
+  openDialog(id_personaje:number) {
+    this.dialog.open(FormFavoritoComponent , {
+      data: {
+        "id_person":id_personaje
+      },
+      width:"30%"
+
+    });
+    this.dialogRef.close();
+  }
+
   getPersonajes(){
+    console.log(this.data)
+    this.arrayPersona=[];
     this.data.personajes.forEach(pers=>{
       this.servicioEpisodio.getInfoPersonaje(pers).subscribe({
         next:(inf)=>{

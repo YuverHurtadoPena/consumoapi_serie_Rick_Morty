@@ -1,0 +1,37 @@
+<div *ngIf="data.mensaje==='no_form'">
+  <h2 class="error-title">ERROR!!</h2>
+
+  <p class="p"> El personaje ya lo registraste como favorito previamente.</p>
+
+
+
+  <div style="display: grid;place-items: center;">
+
+    <div style="display: inline-flex; margin: auto;">
+      <button class="cerrar" mat-button [mat-dialog-close]="true">	<mat-icon>cancel</mat-icon></button>
+  <button  class="save" (click)="irAFavorito()"  mat-button >ir a mis favoritos</button>
+
+
+    </div>
+
+  </div>
+</div>
+<div *ngIf="data.mensaje==='si_form'">
+  <h2 class="exito-title">EXITO!!</h2>
+
+  <p class="p"> El personaje se registro con exito.</p>
+
+
+
+  <div style="display: grid;place-items: center;">
+
+    <div style="display: inline-flex; margin: auto;">
+      <button class="cerrar" mat-button [mat-dialog-close]="true">	<mat-icon>cancel</mat-icon></button>
+  <button  class="save" (click)="irAFavorito()"  mat-button >ir a mis favoritos</button>
+
+
+    </div>
+
+  </div>
+</div>
+

@@ -23,9 +23,21 @@ export class FavoritoService {
     this.cookieService = cookieService;
   }
 
-  guardarEpisodioFavorito(dto:Favoritointerfaz,token:string):Observable<any>{
+  guardarFavorito(dto:Favoritointerfaz,token:string):Observable<any>{
 
-        return this.httpClient.get<any>(
+        return this.httpClient.post<any>(
+          `${this.api3}Favoritos`,dto,
+          { headers: new HttpHeaders({
+
+            'Authorization':'Bearer '+token
+          })}
+        );
+
+      }
+
+      getFavorito(token:string):Observable<Favoritointerfaz[]>{
+
+        return this.httpClient.get<Favoritointerfaz[]>(
           `${this.api3}Favoritos`,
           { headers: new HttpHeaders({
 
@@ -34,4 +46,6 @@ export class FavoritoService {
         );
 
       }
+
+
 }

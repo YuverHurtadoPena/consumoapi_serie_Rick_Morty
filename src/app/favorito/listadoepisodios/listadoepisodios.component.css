@@ -1,9 +1,10 @@
 #managerTask{
 
-  margin-top: 100px;
+  transform: translateY(0%);
   box-shadow: 1px 4px 10px 1px #aaa;
   margin-left: 4%;
   margin-right: 4%;
+
 }
 
 #tabla {

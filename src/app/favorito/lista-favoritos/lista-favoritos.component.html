@@ -1,0 +1,39 @@
+<app-header></app-header>
+<div id="managerTask">
+  <h1 class="title" >LISTA DE PERSONAJES FAVORITOS</h1>
+
+
+  <div class="scroll">
+
+    <div *ngFor="let item of arrayPersona" class="infoPersonaje ">
+      <div><img src="{{ item.image }}" alt="" class="imagen" /></div>
+      <div >
+        <strong>ID: </strong>
+        <label for="">{{ item.id }}</label
+        ><br />
+        <strong>Nombre: </strong>
+        <label for="">{{ item.name }}</label
+        ><br />
+        <strong>Género: </strong>
+        <label for="">{{ item.gender }}</label
+        ><br />
+        <strong>Especie: </strong>
+        <label for="">{{ item.species }}</label
+        ><br />
+        <strong>Estado: </strong>
+        <label for="">{{ item.status }}</label
+        ><br />
+        <ng-container *ngFor="let i of arrayFavorito">
+          <ng-container *ngIf="i.id_caracter === item.id">
+            <strong>Observación: </strong>
+            <label for="">{{ i.observaciones }}</label>
+
+          </ng-container>
+        </ng-container>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
