@@ -5,12 +5,14 @@ import {MatDialog} from '@angular/material/dialog';
 
 import { EpisodioService } from '../episodio.service';
 import { ListaPersonajesComponent } from '../lista-personajes/lista-personajes.component';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-listadoepisodios',
   templateUrl: './listadoepisodios.component.html',
   styleUrls: ['./listadoepisodios.component.css']
 })
 export class ListadoepisodiosComponent implements OnInit {
+  private cookieService:CookieService;
 
 
 
@@ -24,8 +26,9 @@ export class ListadoepisodiosComponent implements OnInit {
   pagina_ultima = 0;
   next_pages=1;
 
-  constructor(service:EpisodioService,public dialog: MatDialog) {
+  constructor(service:EpisodioService,public dialog: MatDialog,cookieService:CookieService) {
     this.service = service;
+    this.cookieService = cookieService;
   }
   openDialog(personajes:any[]=[]) {
     this.dialog.open(ListaPersonajesComponent, {
@@ -40,16 +43,16 @@ export class ListadoepisodiosComponent implements OnInit {
 
   ngOnInit(): void {
     this.getInfoEpisodiosPages();
-    this.pagina_ultima = Number(localStorage.getItem("numeroPages"));
+    this.pagina_ultima = Number( this.cookieService.get("numeroPages"));
     this.getEpisodios(this.url+this.next_pages.toString());
   }
 
   getInfoEpisodiosPages(){
     this.service.getInfoEpisodiosPages().subscribe({
       next:(data)=>{
-        this.pages = data.info.pages.toString();
-        localStorage.setItem("numeroPages", this.pages.toString());
-
+        this.pagina_ultima = data.info.pages;
+        console.log(data)
+        this.cookieService.set("numeroPages",data.info.pages.toString());
       },
       error:()=>{
         alert("Ocurrio un error")
