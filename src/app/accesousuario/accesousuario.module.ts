@@ -7,12 +7,14 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FormComponent } from './form/form.component';
 
 import {MatDialogModule} from '@angular/material/dialog';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     FormComponent,
+    SpinnerComponent,
 
   ],
   imports: [

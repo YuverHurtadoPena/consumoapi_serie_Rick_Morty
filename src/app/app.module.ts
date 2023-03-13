@@ -9,11 +9,12 @@ import { AccesousuarioModule } from './accesousuario/accesousuario.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from "@angular/material/icon";
 import {MatToolbarModule} from '@angular/material/toolbar'
-import {CookieService} from 'ngx-cookie-service'
+import {CookieService} from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
     AppComponent,
+
 
   ],
   imports: [

@@ -66,12 +66,20 @@
             </div>
           </div>
         </ng-container>
+        <div *ngIf="spinner" style="display: grid;place-items: center;">
+          <app-spinner></app-spinner>
+        </div>
+
+        <ng-container  *ngIf="!spinner">
 
 
         <button (click)="guardar()" >Guardar</button>
 
-          <a  [routerLink]="['/acceso/login/']">Regresar
-          </a>
+        <a  [routerLink]="['/acceso/login/']">Regresar
+        </a>
+        </ng-container>
+
+
 
       </form>
     </div>

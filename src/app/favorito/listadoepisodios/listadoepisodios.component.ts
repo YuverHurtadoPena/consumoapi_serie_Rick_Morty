@@ -18,7 +18,7 @@ export class ListadoepisodiosComponent implements OnInit {
 
 
   episodios:EpidosodioInterface[]=[];
-  url="";
+  url="https://rickandmortyapi.com/api/episode?page=";
 
   pages=0;
   pagina_ultima = 0;
@@ -41,16 +41,13 @@ export class ListadoepisodiosComponent implements OnInit {
   ngOnInit(): void {
     this.getInfoEpisodiosPages();
     this.pagina_ultima = Number(localStorage.getItem("numeroPages"));
-    this.getEpisodios(localStorage.getItem("urlEpisodios")+"="+this.next_pages.toString());
+    this.getEpisodios(this.url+this.next_pages.toString());
   }
 
   getInfoEpisodiosPages(){
     this.service.getInfoEpisodiosPages().subscribe({
       next:(data)=>{
-
-
         this.pages = data.info.pages.toString();
-        localStorage.setItem("urlEpisodios",data.info.next.split("=")[0]);
         localStorage.setItem("numeroPages", this.pages.toString());
 
       },
@@ -64,14 +61,14 @@ export class ListadoepisodiosComponent implements OnInit {
   next(){
     if (this.next_pages<this.pagina_ultima){
       this.next_pages = this.next_pages+1;
-      this.getEpisodios(localStorage.getItem("urlEpisodios")+"="+this.next_pages.toString());
+      this.getEpisodios(this.url+this.next_pages.toString());
 
     }
   }
   back(){
     if (this.next_pages>1){
       this.next_pages = this.next_pages-1;
-      this.getEpisodios(localStorage.getItem("urlEpisodios")+"="+this.next_pages.toString());
+      this.getEpisodios(this.url+this.next_pages.toString());
 
     }
   }

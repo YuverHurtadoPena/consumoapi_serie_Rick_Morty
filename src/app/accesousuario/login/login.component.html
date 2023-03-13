@@ -29,12 +29,23 @@
           </div>
         </ng-container>
 
-        <button  (click)="onLogin()">Entrar</button>
+        <div *ngIf="spinner" style="display: grid;place-items: center;">
+          <app-spinner></app-spinner>
+        </div>
+
+        <ng-container *ngIf="!spinner">
+          <button  (click)="onLogin()">Entrar</button>
 
           <a  [routerLink]="['/acceso/registrarUsuario/']">Crear cuenta
           </a>
 
+        </ng-container>
+
+
+
+
       </form>
+
     </div>
   </div>
 

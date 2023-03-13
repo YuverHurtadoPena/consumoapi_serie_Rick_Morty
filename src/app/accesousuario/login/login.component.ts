@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
   private router: Router;
   private accesousuarioService:AccesousuarioService;
 
+  spinner = false;
+
   /*inicio variables para validaciones en el html */
   massaje="El campo es requerido";
   submittedForm = true;
@@ -45,6 +47,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.cookieService.deleteAll();
+    this.spinner=false;
 
 
 
@@ -62,7 +65,9 @@ export class LoginComponent implements OnInit {
 
   onLogin(){
     this.submittedForm =  false;
+
     if(!this.form.invalid){
+      this.spinner=true;
       const dato:Login = {
         password: this.form.controls['clave'].value.trim(),
         companyId:"10",
@@ -71,6 +76,7 @@ export class LoginComponent implements OnInit {
       };
       this.accesousuarioService.autenticacion(dato).subscribe({
         next: (data:Token) =>{
+          this.spinner=false;
           this.token =  data;
           this.cookieService.set("token",this.token.token);
 
@@ -82,7 +88,9 @@ export class LoginComponent implements OnInit {
 
 
         },
-        error: () => {
+        error: (err) => {
+          this.spinner=false;
+          console.log(err)
           this.openDialog("error_login");
         },
 

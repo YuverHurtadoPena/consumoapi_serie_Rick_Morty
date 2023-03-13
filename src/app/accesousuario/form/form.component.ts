@@ -20,6 +20,7 @@ export class FormComponent implements OnInit {
   submittedForm = true;
 
   /*fin variables para validaciones en el html */
+  spinner = false;
 
 
 
@@ -40,6 +41,7 @@ export class FormComponent implements OnInit {
   });
 
   ngOnInit(): void {
+    this.spinner = false;
   }
 
   openDialog(mensaje: string) {
@@ -57,6 +59,7 @@ export class FormComponent implements OnInit {
     this.submittedForm =  false;
 
     if (this.form.valid){
+      this.spinner = true;
       const dato:RegistroLogin = {
 
         nombre:this.form.controls['nombre'].value.trim(),
@@ -68,12 +71,15 @@ export class FormComponent implements OnInit {
       };
       this.accesousuarioService.insertarUsuario(dato).subscribe({
         next: (data) =>{
+          this.spinner = false;
           this.openDialog("cuenta_creada")
           console.log(data)
           this.router.navigate(["login"]);
         },
-        error: () => {
-          alert("el correo o el numero de docuemnto ya existen en la base de datos.")
+        error: (err) => {
+          this.spinner = false;
+          console.log(err)
+          alert("el correo o el numero de docuemnto ya existen en la base de datos o el servidor esta caido.")
         },
       });
 
