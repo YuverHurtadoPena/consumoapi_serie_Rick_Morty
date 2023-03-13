@@ -22,4 +22,8 @@ export class GuardarFavoritoMensajeComponent implements OnInit {
     this.router.navigate(["/lista/favoritos"]);
     this.dialogRef.close();
   }
+  ircrearCuneta(){
+    this.router.navigate(["/acceso/registrarUsuario"]);
+    this.dialogRef.close();
+  }
 }

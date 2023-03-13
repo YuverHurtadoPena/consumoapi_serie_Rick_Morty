@@ -6,6 +6,8 @@ import { AccesousuarioService } from '../accesousuario.service';
 import { Login } from '../dto/login';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { MatDialog } from '@angular/material/dialog';
+import { GuardarFavoritoMensajeComponent } from 'src/app/favorito/mesajes/guardar-favorito-mensaje/guardar-favorito-mensaje.component';
 
 @Component({
   selector: 'app-login',
@@ -34,7 +36,7 @@ export class LoginComponent implements OnInit {
 
 
 
-  constructor( accesousuarioService:AccesousuarioService,router: Router, cookieService:CookieService ) {
+  constructor( accesousuarioService:AccesousuarioService,router: Router, cookieService:CookieService,public para_abrir_otro_m: MatDialog ) {
     this.accesousuarioService = accesousuarioService;
     this.router = router;
     this.cookieService = cookieService;
@@ -46,6 +48,16 @@ export class LoginComponent implements OnInit {
 
 
 
+  }
+  openDialog(mensaje: string) {
+    this.para_abrir_otro_m.open(GuardarFavoritoMensajeComponent, {
+      data: {
+        "mensaje": mensaje
+      },
+      width: '30%',
+      height: '300px',
+
+    });
   }
 
   onLogin(){
@@ -71,7 +83,7 @@ export class LoginComponent implements OnInit {
 
         },
         error: () => {
-          alert("ocurrio un error ")
+          this.openDialog("error_login");
         },
 
       })

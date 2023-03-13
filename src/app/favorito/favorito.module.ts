@@ -40,7 +40,6 @@ import { GuardarFavoritoMensajeComponent } from './mesajes/guardar-favorito-mens
     MatDialogModule,
     MatFormFieldModule, FormsModule, ReactiveFormsModule
   ],
-
-  entryComponents:[FormFavoritoComponent]
+  exports:[ GuardarFavoritoMensajeComponent]
 })
 export class FavoritoModule { }

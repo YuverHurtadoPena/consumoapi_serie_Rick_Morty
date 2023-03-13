@@ -57,26 +57,29 @@ export class FormFavoritoComponent implements OnInit {
   }
   postGuardar() {
     this.submittedForm = false;
+    if (this.form.valid){
+      const dato: Favoritointerfaz = {
+        id_caracter: this.data.id_person,
+        observaciones: this.form.controls['observacion'].value.trim(),
+        usuario: this.cookieService.get("usuario"),
 
-    const dato: Favoritointerfaz = {
-      id_caracter: this.data.id_person,
-      observaciones: "this.form.controls['observacion'].value.trim()",
-      usuario: this.cookieService.get("usuario"),
+      }
+      this.servicio.guardarFavorito(dato, this.cookieService.get("token")).subscribe({
+        next: (data) => {
+          console.log(data)
+          this.dialogRef.close();
+          this.openDialog("si_form");
+          this.dialogRef.close();
+        },
+        error: (err) => {
+          this.openDialog("no_form");
+          console.log(err)
+          this.dialogRef.close();
+        }
+      });
 
     }
-    this.servicio.guardarFavorito(dato, this.cookieService.get("token")).subscribe({
-      next: (data) => {
-        console.log(data)
-        this.dialogRef.close();
-        this.openDialog("si_form");
-        this.dialogRef.close();
-      },
-      error: (err) => {
-        this.openDialog("no_form");
-        console.log(err)
-        this.dialogRef.close();
-      }
-    });
+
 
 
   }

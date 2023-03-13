@@ -4,7 +4,8 @@ import { Router } from '@angular/router';
 import { CustomValidators } from 'src/app/util/custom-validators';
 import { AccesousuarioService } from '../accesousuario.service';
 import { RegistroLogin } from '../dto/registro-login';
-
+import { MatDialog } from '@angular/material/dialog';
+import { GuardarFavoritoMensajeComponent } from 'src/app/favorito/mesajes/guardar-favorito-mensaje/guardar-favorito-mensaje.component';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
@@ -22,7 +23,7 @@ export class FormComponent implements OnInit {
 
 
 
-  constructor( accesousuarioService:AccesousuarioService,router: Router ) {
+  constructor( accesousuarioService:AccesousuarioService,router: Router,public para_abrir_otro_m: MatDialog ) {
     this.accesousuarioService = accesousuarioService;
     this.router=router;
 
@@ -41,6 +42,17 @@ export class FormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openDialog(mensaje: string) {
+    this.para_abrir_otro_m.open(GuardarFavoritoMensajeComponent, {
+      data: {
+        "mensaje": mensaje
+      },
+      width: '30%',
+      height: '300px',
+
+    });
+  }
+
   guardar(){
     this.submittedForm =  false;
 
@@ -56,7 +68,7 @@ export class FormComponent implements OnInit {
       };
       this.accesousuarioService.insertarUsuario(dato).subscribe({
         next: (data) =>{
-          alert("Usuario guardado con exito")
+          this.openDialog("cuenta_creada")
           console.log(data)
           this.router.navigate(["login"]);
         },

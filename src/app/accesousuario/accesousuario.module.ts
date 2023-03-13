@@ -6,6 +6,8 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FormComponent } from './form/form.component';
 
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { FormComponent } from './form/form.component';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    AccesousuarioRoutingModule
+    AccesousuarioRoutingModule,
+    MatDialogModule
   ],
   exports:[
   ]

@@ -16,6 +16,7 @@
 
   </div>
 </div>
+ <!--CUANDO SE REGISTRA UN FAVORITO-->
 <div *ngIf="data.mensaje==='si_form'">
   <h2 class="exito-title">EXITO!!</h2>
 
@@ -34,4 +35,40 @@
 
   </div>
 </div>
+<!--CUANDO CREDENCIALES INCORRECTAS-->
+<div *ngIf="data.mensaje==='error_login'">
+  <h2 class="error-title">ERROR!!</h2>
+
+  <p class="p"> Las credenciales son incorrectas. Si no tiene una cuenta puede crear dando click en "crear cuenta" o dar click en "ir a crear cuenta"</p>
+
+
+
+  <div style="display: grid;place-items: center;">
+
+    <div style="display: inline-flex; margin: auto;">
+      <button class="cerrar" mat-button [mat-dialog-close]="true">	<mat-icon>cancel</mat-icon></button>
+      <button  class="save" (click)=" ircrearCuneta()"  mat-button >ir a crear cuenta</button>
+
+    </div>
+
+  </div>
+</div>
+<!--Cuando se crea una cuenta-->
+<div *ngIf="data.mensaje==='cuenta_creada'">
+  <h2 class="exito-title">CUENTA CREADA!!</h2>
+
+  <p class="p"> La cuenta se creo con exito. Ya puedes ingresar a traves del login y ver los capitulos y crear tus personajes favoritos.</p>
+
+
+
+  <div style="display: grid;place-items: center;">
+
+    <div style="display: inline-flex; margin: auto;">
+      <button class="cerrar" mat-button [mat-dialog-close]="true">	<mat-icon>cancel</mat-icon></button>
+    </div>
+
+  </div>
+</div>
+
+
 
